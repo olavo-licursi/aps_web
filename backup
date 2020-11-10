@@ -1,0 +1,130 @@
+$url = 'https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/cadastrareletro';
+$iniciar = curl_init('https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/cadastrareletro');
+curl_setopt($iniciar, CURLOPT_URL, "https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/buscaeletro/1");
+curl_exec($iniciar);
+curl_close($iniciar);
+
+
+
+
+//$url = 'https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/cadastrareletro';
+$iniciar = curl_init('https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/cadastrareletro');
+
+curl_setopt($iniciar, CURLOPT_RETURNTRANSFER, true);
+
+$dados = array(
+    'name' => 'geladeira',
+    'marca' => 'samsung',
+    'potencia' => '100',
+    'tempoUso' => '100.00',
+    'pessoaIdFk' => '2'
+);
+
+$dados = json_encode($dados);
+//$dados = http_build_query($dados); 
+//$dados = '[' . $dados . ']';
+print_r($dados);
+curl_setopt($iniciar, CURLOPT_POST, true);
+curl_setopt($iniciar, CURLOPT_POSTFIELDS, $dados);
+
+curl_exec($iniciar);
+curl_close($iniciar);
+//print_r($iniciar);
+
+/*$curl = curl_init($url);
+echo $curl;
+echo curl_getinfo($curl, CURLINFO_HTTP_CODE);
+*/
+
+
+
+
+
+
+$url_data = "https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/cadastrareletro";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+curl_setopt( $ch, CURLOPT_URL, $url_data);
+curl_setopt ($ch, CURLOPT_POST, true);
+
+$parametros = array(
+    'name' => 'geladeira',
+    'marca' => 'samsung',
+    'potencia' => '100',
+    'tempoUso' => '100.00',
+    'pessoaIdFk' => '2'
+);
+$data_Post = json_encode($parametros); 
+
+curl_setopt ($ch, CURLOPT_POSTFIELDS, $data_Post);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch);
+curl_close($ch);
+//curl_close($ch);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$url = "https://wsrestrletricocossumer.herokuapp.com/webresources/consumer/editaeletro";
+
+$iniciar = curl_init();
+
+curl_setopt($iniciar, CURLOPT_URL, $url);
+curl_setopt($iniciar, CURLOPT_RETURNTRANSFER, false);
+
+$dados = array(
+    'id' => '136',
+    'name' => 'geladeira',
+    'marca' => 'samsung',
+    'potencia' => '100',
+    'tempoUso' => '7',
+    'pessoaIdFk' => '1'
+);
+
+$dados = json_encode($dados);
+//$dados = '[' . $dados . ']';
+//print_r($dados);
+
+
+curl_setopt($iniciar, CURLOPT_CUSTOMREQUEST, "PUT");
+//curl_setopt($iniciar, CURLOPT_HEADER, 0);
+//curl_setopt($iniciar, CURLOPT_POST, true);
+curl_setopt($iniciar, CURLOPT_POSTFIELDS, $dados);
+
+curl_exec($iniciar);
+
+
+if($errno = curl_errno($iniciar)) {
+    $error_message = curl_strerror($errno);
+    echo "cURL error ({$errno}):\n {$error_message}";
+}
+
+
+curl_close($iniciar);
+
+
+switch ($iModo) {
+        case 'alt':
+            
+            break;
+        case 'del':
+            
+            break;
+    }
